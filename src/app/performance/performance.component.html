@@ -7,7 +7,7 @@
             </h3>
         </header>
         <br />
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-4">
                 <div class="navbar">
                     <app-filter-textbox (changed)="filterChanged($event)"></app-filter-textbox>
@@ -19,9 +19,9 @@
             <div class="col-md-4">
                 <a class="btn btn-default" [routerLink]="['/apprisial', '0']">Add apprisial</a>
             </div>
-        </div>
+        </div> -->
     
-        <app-customers-grid [employees]="filteredEmployee"></app-customers-grid>
+        <app-employee-grid [employees]="filteredEmployee"></app-employee-grid>
 
         <!-- <app-pagination [totalItems]="totalRecords" 
             [pageSize]="pageSize" 

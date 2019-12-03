@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CustomersComponent } from './customers/customers.component';
-import { EmployeeGridComponent } from './customers/customers-grid.component';
-import { EmployeeEditComponent } from './customers/customer-edit.component';
-import { CustomerEditReactiveComponent } from './customers/customer-edit-reactive.component';
+import { employeebaseComponent } from './admin/adminbase.component';
+import { EmployeeGridComponent } from './admin/employee-grid.component';
+import { EmployeeEditComponent } from './admin/employee-edit.component';
+// import { CustomerEditReactiveComponent } from './customers/customer-edit-reactive.component';
 import { IRouting } from './shared/interfaces';
 import { PerformanceComponent } from './performance/performance.component';
 import { PerformanceEditComponent } from './performance/performance-edit.component';
@@ -18,7 +18,7 @@ import { EmployeeComponent } from './employee/employee.component';
 const routes: Routes = [
   { path: '', component: UserSelctionComponent },
   { path: 'selectuser', component: UserSelctionComponent},
-  { path: 'customers', component: CustomersComponent},
+  { path: 'customers', component: employeebaseComponent},
   { path: 'customers/:id', component: EmployeeEditComponent},
   { path: 'employeelist', component: EmployeeListComponent },
   { path: 'employee/:id', component: EmployeeComponent},
@@ -35,6 +35,6 @@ const routes: Routes = [
   exports: [ RouterModule]
 })
 export class AppRoutingModule {
-  static components = [ CustomersComponent, EmployeeEditComponent, CustomerEditReactiveComponent, EmployeeGridComponent,PerformanceComponent,
+  static components = [ employeebaseComponent, EmployeeEditComponent, EmployeeGridComponent,PerformanceComponent,
     PerformanceEditComponent,StarRatingComponent];
 }

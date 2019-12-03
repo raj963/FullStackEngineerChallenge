@@ -3,19 +3,20 @@
         <header>
             <h3>
                 <span class="glyphicon glyphicon-user"></span>
+                <div>Employee List</div>
                 <h2>Select user for login in real case there should be login screen where user can enter credentials</h2>
             </h3>
         </header>
         <br />
         <div class="row">
          
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                     <input class="btn btn-info" type="button" value="Assign Review" (click)="assignReview()">
                
-            </div>
+            </div> -->
         </div>
     
-        <app-customers-grid [employees]="filteredEmployee" [disableFields]="disableFields"></app-customers-grid>
+        <app-employee-grid [employees]="filteredEmployee" [disableFields]="disableFields"></app-employee-grid>
 
         <app-pagination [totalItems]="totalRecords" 
             [pageSize]="pageSize" 

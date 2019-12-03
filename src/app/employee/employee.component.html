@@ -3,26 +3,23 @@
 <button class="collapsible">Employee Profile</button>
 <div class="content">
 <span>user can view and edit own profile but cann't delete</span>
-
   <div>
-    <app-customer-edit (employeeData)="getEmpData($event)" [accessMethodDel]="false"></app-customer-edit>
+    <app-employee-edit (employeeData)="getEmpData($event)" [accessMethodDel]="false"></app-employee-edit>
   </div>
-
-  
 </div>
+
 <button class="collapsible">Performance review for other employee</button>
 <div class="content">
   <div *ngIf="employee && employee.OtherEmpReview.length;else other_content">
     <div *ngIf="showGrid;else loading">
-      <app-customers [empList]="employeeList" [performanceReviewOnly]="true"></app-customers>
+      <app-admin-base [empList]="employeeList" [performanceReviewOnly]="true"></app-admin-base>
     </div>
-
   </div>
+
 </div>
 <button class="collapsible">Emplyee Performance If Any</button>
 <div class="content">
   <app-performance-edit [isAdminUser]="isAdminUser"></app-performance-edit>
-
 </div>
 
 

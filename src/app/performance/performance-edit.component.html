@@ -2,7 +2,7 @@
   <header>
       <h3>
           <span class="glyphicon glyphicon-user"></span>
-          <!-- {{ employe.firstName }} {{ employe.lastName }} -->
+          {{ employe.firstName }} {{ employe.lastName }}
       </h3>
   </header>
   <br />
@@ -57,11 +57,11 @@
           (rate)="onRate($event,'Productivity')"></star-rating>
       </div>
     </div>
-    <div class="form-group"  *ngIf="!isAdminUser">
-      <label>empFeedback</label>
+    <div class="form-group"  >
+      <label>employee Feedback on Performance</label>
       <div>
           <input type="text" class="form-control" name="address" [(ngModel)]="performanceObj.empFeedback" required
-          />
+        [disabled]="isAdminUser"  />
       </div>
     </div>
 
