@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row grid-container">
+        <div class="col-md-10">
+            <div class="table">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th (click)="sort('firstName')">First Name</th>
+                            <th (click)="sort('lastName')">Last Name</th>
+                            <th (click)="sort('address')">Address</th>
+                            <th (click)="sort('city')">City</th>
+                            <th (click)="sort('state.name')">State</th>
+                            <th *ngIf="!(disableFields && disableFields.performance)">Performance</th>
+                            <th *ngIf="!(disableFields&&disableFields.selectEmployee)">Select employee</th>
+                            <th   *ngIf="!(disableFields && disableFields.selectReviewer)">Select Reviewer</th>
+                            <!-- <th (click)="sort('orderTotal')">Order Total</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let customer of employees;trackBy:trackby.customer">
+                            <td><img src="/assets/images/{{ customer.gender | lowercase }}.png"
+                                    class="card-image" alt="Customer Image" /></td>
+                                    <td>
+                                         <!-- <ng-container *ngIf="!disableFields.firstName; else internalBlock"/> -->
+                                        <a [routerLink]="setdynamicRout(customer)">{{ customer.firstName | capitalize }}</a>
+                                      <!-- </ng-container> -->
+                                    </td>
+                            <!-- <td><a >{{ customer.firstName | capitalize }}</a></td> -->
+                            <td>{{ customer.lastName | capitalize }}</td>
+                            <td>{{ customer.address }}</td>
+                            <td>{{ customer.city | trim }}</td>
+                            <td>{{ customer.state.name }}</td>
+                            <!-- <td>{{ customer.orderTotal | currency:'USD':'symbol' }}</td> -->
+                            <td *ngIf="!(disableFields && disableFields.performance)"><button type="button" (click)="setEmplyId(customer)" class="btn btn-info">edit</button></td>
+                    
+                            <td *ngIf="!(disableFields &&disableFields.selectEmployee)"> <input type="checkbox" (click)="setEmploye(customer,$event.target)"  class="form-check-input" id="exampleCheck1"></td>
+                            <td *ngIf="!(disableFields &&disableFields.selectReviewer)"> <input type="checkbox"  (click)="setReviewer(customer,$event.target)" class="form-check-input" id="exampleCheck2"></td>
+                        </tr>
+                        <tr *ngIf="!employees.length">
+                            <td>&nbsp;</td>
+                            <td colspan="6">No Records Found</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <ng-template #internalBlock>
+                    <a [routerLink]="['/employee']">{{ customer.firstName | capitalize }}</a>
+                  </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

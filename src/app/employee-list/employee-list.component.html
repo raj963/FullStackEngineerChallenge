@@ -1,0 +1,25 @@
+<div class="customers view indent">
+    <div class="container">
+        <header>
+            <h3>
+                <span class="glyphicon glyphicon-user"></span>
+                <h2>Select user for login in real case there should be login screen where user can enter credentials</h2>
+            </h3>
+        </header>
+        <br />
+        <div class="row">
+         
+            <div class="col-md-4">
+                    <input class="btn btn-info" type="button" value="Assign Review" (click)="assignReview()">
+               
+            </div>
+        </div>
+    
+        <app-customers-grid [employees]="filteredEmployee" [disableFields]="disableFields"></app-customers-grid>
+
+        <app-pagination [totalItems]="totalRecords" 
+            [pageSize]="pageSize" 
+            (pageChanged)="pageChanged($event)"></app-pagination>
+          
+    </div>
+</div>
