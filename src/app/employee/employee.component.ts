@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IEmployee } from '../shared/interfaces';
 import { DataService } from '../core/data.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-employee',
@@ -9,10 +8,10 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-  accessMethodDel=false;
+  accessMethodDel = false;
   isAdminUser: boolean;
-  employee: IEmployee=null;
-  employeeList: any[]=[];
+  employee: IEmployee = null;
+  employeeList: any[] = [];
   showGrid: boolean;
 
   constructor(private dataService: DataService) { }
@@ -22,7 +21,7 @@ export class EmployeeComponent implements OnInit {
 
     // this.accessMethodDel = {edit:true,delete:false}
 
-    this.isAdminUser=false
+    this.isAdminUser = false
   }
 
   handlerColleps() {
@@ -42,31 +41,34 @@ export class EmployeeComponent implements OnInit {
     }
   }
 
-  getEmpData(eve){
-    
-    this.employee=eve
-    if(this.employee&& this.employee.OtherEmpReview.length){
+  getEmpData(eve) {
+
+    this.employee = eve
+    if (this.employee && this.employee.OtherEmpReview.length) {
 
       this.employee.OtherEmpReview.forEach(element => {
         this.getEmployee(element)
       });
-      this.showEmpGrid()
+      // this.showEmpGrid()
     }
   }
-  showEmpGrid() {
-   setTimeout(() => {
-     this.showGrid=true
-   }, 1000);
-  }
+  // showEmpGrid() {
+  //  setTimeout(() => {
+  //    this.showGrid=true
+  //  }, 1000);
+  // }
 
   getEmployee(id: string) {
-    let me =this;
+    let me = this;
     this.dataService.getEmployee(id)
       .subscribe((customer: IEmployee) => {
         // me.employee = customer;
         me.employeeList.push(me.employee)
+        if (me.employee.OtherEmpReview.length === me.employeeList.length) {
+          me.showGrid = true;
+        }
       },
-      (err: any) => console.log(err));
-}
+        (err: any) => console.log(err));
+  }
 
 }
